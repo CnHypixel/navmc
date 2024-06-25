@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myw —— Mybbs导航站</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://www.pixelbbs.cn/source/plugin/bphp_clouds/upload/4438/20240607/38a083d043acbcabc27385f76510ce69.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        .top-nav {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            text-align: center;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+        }
+
+        .taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-top: 1px solid #ccc;
+            padding: 8px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .taskbar button {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .taskbar button img {
+            width: 32px;
+            height: 32px;
+        }
+
+        #time,
+        #weather {
+            color: #fff;
+            margin-right: 20px;
+        }
+
+        .desktop-icon {
+            position: absolute;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .desktop-icon img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 15px; /* 圆角边框 */
+        }
+
+        .desktop-icon:hover {
+            transform: translateY(-5px);
+        }
+
+        .desktop-icon .tooltip {
+            display: none;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #000;
+            font-size: 12px;
+            padding: 5px;
+            border-radius: 5px;
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            text-align: center;
+        }
+
+        .desktop-icon:hover .tooltip {
+            display: block;
+        }
+
+        .icon-container {
+            position: relative;
+            top: 120px;
+            left: 50px;
+        }
+
+        .icon-container .desktop-icon:nth-child(2) {
+            left: 200px; /* 第二个图标距离左边200px */
+        }
+
+        .icon-container .desktop-icon:nth-child(3) {
+            left: 400px; /* 第三个图标距离左边400px */
+        }
+
+        .icon-container .desktop-icon:nth-child(4) {
+            left: 600px; /* 第四个图标距离左边600px */
+        }
+
+        .icon-container .desktop-icon:nth-child(5) {
+            left: 800px; /* 第五个图标距离左边800px */
+        }
+
+        .icon-container .desktop-icon:nth-child(6) {
+            left: 1000px; /* 第六个图标距离左边1000px */
+        }
+
+        .icon-container .desktop-icon:nth-child(7) {
+            top: 200px; /* 第七个图标距离顶部200px */
+        }
+        
+        }
+
+        .icon-container .desktop-icon:nth-child(8) {
+            top: 200px; /* 第八个图标距离顶部200px */
+            left: 200px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="top-nav">Mynavigation —— Mybbs导航站</div>
+
+<div class="taskbar">
+    <div>
+        <span id="time"></span>
+        <span id="weather"></span>
+    </div>
+    <button><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Windows_logo%2C_2012-2021.svg/480px-Windows_logo%2C_2012-2021.svg.png" alt="Windows Logo"></button>
+    <button><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Windows_11_Logo.svg/1200px-Windows_11_Logo.svg.png" alt="Windows 11 Logo"></button>
+</div>
+
+<div class="icon-container">
+    <!-- 第一个图标 -->
+    <a href="https://www.mcbbs.net" target="_blank" class="desktop-icon" style="left: 0px;">
+        <img src="https://ts1.cn.mm.bing.net/th/id/R-C.9a6de07448a467a377b44596d9ae5da0?rik=8WbMsGmKuRB5XA&riu=http%3a%2f%2fpic.2265.com%2fupload%2f2021-8%2f2021810928385817.png&ehk=Xi9L%2fFaaTMGPUxE7TnAHh3CKp6VDRo44YeVHbgK3Auk%3d&risl=&pid=ImgRaw&r=0" alt="Mcbbs图标">
+        <div class="tooltip">
+            <strong>Mcbbs</strong><br>
+            Minecraft中文论坛，国内最大的MC社区，拥有国内最大的国际版玩家群体及最多的社区资源。
+        </div>
+    </a>
+    <!-- 第二个图标 -->
+    <a href="/" target="_blank" class="desktop-icon" style="left: 200px;">
+        <img src="https://img.picui.cn/free/2024/06/10/66669544c9c97.ico" alt="Mybbs图标">
+        <div class="tooltip">
+            <strong>Mybbs</strong><br>
+            Mybbs —— 本站
+        </div>
+    </a>
+    <!-- 第三个图标 -->
+    <a href="https://www.spigotmc.org/" target="_blank" class="desktop-icon" style="left: 400px;">
+        <img src="https://tse3-mm.cn.bing.net/th/id/OIP-C.V6-p4NjpleUvsgMrjrwD1wAAAA?rs=1&pid=ImgDetMain" alt="Spigot图标">
+        <div class="tooltip">
+            <strong>Spigot</strong><br>
+            国外知名mc论坛，有许多优质插件。
+        </div>
+    </a>
+    <!-- 第四个图标 -->
+    <a href="https://www.klpbbs.com/" target="_blank" class="desktop-icon" style="left: 600px;">
+        <img src="https://ts1.cn.mm.bing.net/th/id/R-C.f4352890d349df581802fea084daa45c?rik=%2b3HvSTbiLWsLKg&riu=http%3a%2f%2fpic.pdowncc.com%2fupload%2f2022-1%2f20221181034321929.png&ehk=9iiR31sfHXUnzbBdpRYuszd9qfOTjEjazN2OM2bPRcs%3d&risl=&pid=ImgRaw&r=0" alt="苦力怕论坛图标">
+        <div class="tooltip">
+            <strong>苦力怕论坛</strong><br>
+            我的世界苦力怕论坛，一个MC玩家社区，拥有大量基岩版搬运、汉化资源。
+        </div>
+    </a>
+    <!-- 第五个图标 -->
+    <a href="https://www.minebbs.com/" target="_blank" class="desktop-icon" style="left: 800px;">
+        <img src="https://tse3-mm.cn.bing.net/th/id/OIP-C.zPMpZjONkBj-onOQ5okycAAAAA?rs=1&pid=ImgDetMain" alt="Minebbs图标">
+        <div class="tooltip">
+            <strong>Minebbs</strong><br>
+            我的世界中文论坛
+        </div>
+    </a>
+    <!-- 第六个图标 -->
+    <a href="https://www.zuimc.com/" target="_blank" class="desktop-icon" style="left: 1000px;">
+        <img src="https://opmanage.233leyuan.com/image/F81SJ7MxrpkPV1DKwIHIhBQ5H2MXFq7E.jpg" alt="Zmc图标">
+        <div class="tooltip">
+            <strong>Zmc</strong><br>
+            最MC论坛 - 我的世界_Minecraft_联机_服主_资源
+        </div>
+    </a>
+    <!-- 第七个图标 -->
+    <a href="https://www.mcbebbs.com/" target="_blank" class="desktop-icon" style="left: 0px; top: 200px;">
+        <img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.Octhm8FDe3D36q03_osc_gAAAA?rs=1&pid=ImgDetMain" alt="MCBEbbs图标">
+        <div class="tooltip">
+            <strong>MCBEbbs</strong><br>
+            拥有许多BE资源
+        </div>
+    <!-- 第八个图标 -->
+    <a href="https://www.mcleak.cn/" target="_blank" class="desktop-icon" style="left: 200px; top: 200px;">
+        <img src="https://img.pixelbbs.cn/LightPicture/2024/06/e48f4849bd032eb8.png" alt="Leak论坛图标">
+        <div class="tooltip">
+            <strong>Leak资源网</strong><br>
+            Minecraft泄露资源交流社区
+        </div>
+    </a>
+</div>
+
+<script>
+    const timeElement = document.getElementById('time');
+    const weatherElement = document.getElementById('weather');
+
+    function updateTime() {
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const seconds = now.getSeconds().toString().padStart(2, '0');
+        timeElement.textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    setInterval(updateTime, 1000);
+    updateTime();
+
+    function updateWeather() {
+        // This function can be expanded to fetch real weather data
+        weatherElement.textContent = 'Sunny 25°C';
+    }
+
+    updateWeather();
+</script>
+</body>
+</html>
+
